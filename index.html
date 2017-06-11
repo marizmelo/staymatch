@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html class="responsive">
+  <head>
+    <meta charset="utf-8">
+    <title>Staymatch | Find Hotels Effortlessly</title>
+    <link rel="stylesheet" href="./styles/staymatch.css">
+    <style>
+      body {
+        background: #565656;
+        color: white;
+      }
+      nav {
+        padding: 32px 0;
+      }
+      #content {
+        padding-top: 50px;
+        text-align: center;
+      }
+      h2 {
+        font-weight: 400;
+        font-size: 220%;
+      }
+      h1 {
+        font-size: 900%;
+        font-weight: 400;
+      }
+      #search {
+        position: relative;
+      }
+      #search input {
+          padding: 20px 28px;
+          font-size: 150%;
+      }
+      ::-webkit-input-placeholder {
+        font-style: italic;
+      }
+      .bt-icon-search {
+        color: white;
+        background: #41b4e6;
+        padding: 15px 12px;
+        font-size: 150%;
+        margin-right: 105px;
+        margin-top: 20px;
+        position: absolute;
+        right: 0;
+      }
+      .bt-icon-search:hover {
+        color: white;
+      }
+    </style>
+    <script src="./scripts/jquery.min.js" charset="utf-8"></script>
+    <script>
+      $(function (){
+        $("h2").on("click", function () {
+          console.log("yes");
+          $("#content").load("./main.html");
+        });
+
+
+        // SUGGESTIONS
+        var suggestions = $.getJSON( "./data/suggestions.json?HELLO", function(data) {
+            $.each( data, function( i, item ) {
+              console.log(item.suggestion);
+            });
+          }).fail(function() {
+            console.log( "error" );
+          });
+
+      });
+    </script>
+  </head>
+  <body>
+    <!-- NAVIGATION MENU -->
+    <nav class="large">
+      <div class="layout-fixed-center">
+        <span class="logo">
+          <img src="./styles/img/logo_white.png">
+        </span>
+      </div>
+    </nav>
+    <div id="content" class="layout-fixed-center">
+      <h2>Find the hotel you prefer for your trip in…</h2>
+      <div id="location">
+        <h5 class="lighter" style="padding-top: 50px;">United States / California</h5>
+        <h1>LOS ANGELES</h1>
+      </div>
+      <div id="search" style="padding-top: 30px;">
+        <a href="#" class="bt-icon-search border-radius-circle"><i class="icon-search"></i></a>
+        <input type="text" style="width: 80%;" class="border-radius-search" placeholder="Tell me anything you are looking in your next hotel stay…">
+      </div>
+      <div id="suggestions">
+        suggestions
+      </div>
+    </div>
+  </body>
+</html>
