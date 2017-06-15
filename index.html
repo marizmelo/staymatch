@@ -2,69 +2,40 @@
 <html class="responsive" ng-app="Staymatch">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Staymatch | Find Hotels Effortlessly</title>
     <link rel="stylesheet" href="./styles/xtyle.css">
-    <style>
-      body {
-        background: #565656;
-        color: white;
-      }
-      nav {
-        padding: 32px 0;
-      }
-      #content {
-        padding-top: 50px;
-        text-align: center;
-      }
-      h2 {
-        font-weight: 400;
-        font-size: 220%;
-      }
-      h1 {
-        font-size: 900%;
-        font-weight: 400;
-      }
-      #search {
-        position: relative;
-      }
-      #search input {
-          padding: 20px 28px;
-          font-size: 150%;
-      }
-      ::-webkit-input-placeholder {
-        font-style: italic;
-      }
-      .bt-icon-search {
-        color: white;
-        background: #41b4e6;
-        padding: 15px 12px;
-        font-size: 150%;
-        margin-right: 105px;
-        margin-top: 20px;
-        position: absolute;
-        right: 0;
-      }
-      .bt-icon-search:hover {
-        color: white;
-      }
-    </style>
+    <link rel="stylesheet" href="./styles/staymatch.css">
     <script src="./scripts/jquery.min.js"></script>
     <script src="./scripts/angular.min.js"></script>
     <script src="./scripts/angular-ui-router.min.js"></script>
     <script>
-      var Staymatch = angular.module('Staymatch', ['ui.router']);
+      var app = angular.module('Staymatch', ['ui.router']);
 
-      Staymatch.config(function ($stateProvider, $urlRouterProvider) {
+      app.config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/home');
         $stateProvider
           .state('home', {
             url: '/home',
             templateUrl: '/views/home.html'
+          }).state('results', {
+            url: '/results?search',
+            templateUrl: '/views/results.html'
           });
+      });
+
+      app.controller('MainCtrl', function ($scope, $state, $rootScope){
+        $rootScope.search = "";
+      });
+      app.controller('HomeCtrl', function ($scope, $state, $rootScope){
+        $scope.searchResults = function () {
+          $rootScope.search = $scope.search;
+          $state.go('results');
+        };
       });
     </script>
   </head>
-  <body>
+  <body ng-controller="MainCtrl">
     <div ui-view></div>
   </body>
 </html>
