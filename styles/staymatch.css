@@ -1,3 +1,15 @@
 .layout-fixed-center {
   padding: 0 24px;
 }
+nav a, nav span {
+  line-height: 1.2;
+}
+tag {
+  font-size: 100%;
+  padding: 8px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+tag .icon-cancel {
+  padding: 0;
+}

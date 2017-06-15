@@ -43,6 +43,11 @@
           templateUrl: '/components/searchbar/searchbar.html'
         };
       });
+      app.directive('matchSearch', function () {
+        return {
+          templateUrl: '/components/search/search.html'
+        };
+      });
     </script>
   </head>
   <body ng-controller="MainCtrl">
