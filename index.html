@@ -11,7 +11,6 @@
     <script src="./scripts/angular-ui-router.min.js"></script>
     <script>
       var app = angular.module('Staymatch', ['ui.router']);
-
       app.config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/home');
         $stateProvider
@@ -24,18 +23,29 @@
           });
       });
 
+      // CONTROLLERS
       app.controller('MainCtrl', function ($scope, $state, $rootScope){
         $rootScope.search = "";
+      });
+      app.controller('ResultsCtrl', function ($scope, $state, $stateParams, $rootScope){
+        $scope.search = $stateParams.search;
       });
       app.controller('HomeCtrl', function ($scope, $state, $rootScope){
         $scope.searchResults = function () {
           $rootScope.search = $scope.search;
-          $state.go('results');
+          $state.go('results', {search: $scope.search});
+        };
+      });
+
+      // DIRECTIVES
+      app.directive('matchSearchbar', function (){
+        return {
+          templateUrl: '/components/searchbar/searchbar.html'
         };
       });
     </script>
   </head>
   <body ng-controller="MainCtrl">
-    <div ui-view></div>
+    <div ui-view style="height: inherit;"></div>
   </body>
 </html>
