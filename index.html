@@ -29,6 +29,21 @@
       });
       app.controller('ResultsCtrl', function ($scope, $state, $stateParams, $rootScope){
         $scope.search = $stateParams.search;
+        $scope.current = {};
+        $scope.results = [
+          {
+            "name": "Hotel Name"
+          },
+          {
+            "name": "Hotel Name"
+          },
+          {
+            "name": "Hotel Name"
+          },
+          {
+            "name": "Hotel Name"
+          }
+        ]
       });
       app.controller('HomeCtrl', function ($scope, $state, $rootScope){
         $scope.searchResults = function () {
@@ -46,6 +61,18 @@
       app.directive('matchSearch', function () {
         return {
           templateUrl: '/components/search/search.html'
+        };
+      });
+      app.directive('matchResultList', function () {
+        return {
+          templateUrl: '/components/result-list/result-list.html',
+          controller: 'ResultsCtrl'
+        };
+      });
+      app.directive('matchResultDetail', function () {
+        return {
+          templateUrl: '/components/result-detail/result-detail.html',
+          controller: 'ResultsCtrl'
         };
       });
     </script>

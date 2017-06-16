@@ -3,8 +3,29 @@
     background: #EBEBEB;
     height: inherit;
   }
+  .match-page-results-banner h5, .match-page-results-banner h1 {
+    font-weight: 400;
+  }
+  .match-page-results-banner h1 {
+    padding-top: 0;
+    font-size: 300%;
+  }
+  .match-page-results-banner {
+    color: white;
+    background: #565656;
+    padding: 20px 0;
+  }
 </style>
-<div class="match-page-results" ng-controller="ResultsCtrl">
+<match-result-detail></match-result-detail>
+<div class="match-page-results" ng-controller= "ResultsCtrl">
   <match-searchbar></match-searchbar>
-  {{search}}
+  <div class="match-page-results-banner">
+    <div class="layout-fixed-center">
+      <h5>United States / California</h5>
+      <h1>LOS ANGELES</h1>
+    </div>
+  </div>
+  <div class="layout-fixed-center">
+    <match-result-list></match-result-list>
+  </div>
 </div>

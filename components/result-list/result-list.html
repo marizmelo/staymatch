@@ -1,0 +1,19 @@
+<style>
+  .grid .grid1 > div {
+    
+    margin: 0;
+  }
+</style>
+<div class="action-map grid">
+  <div class="grid1">
+    <div><h2 style="font-weight:400">We found "{{totalnumber || 0}}" hotels for you</h2></div>
+  </div>
+  <div class="grid1">
+    <div><img src="./styles/img/map.png" width="100%"></div>
+  </div>
+</div>
+<div class="results grid">
+  <div ng-repeat="hotel in results" class="grid3">
+    <div style="background: red;">{{hotel.name}}</div>
+  </div>
+</div>
