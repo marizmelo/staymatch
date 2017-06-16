@@ -8,14 +8,26 @@
   .result-detail{
     position: absolute;
     background: white;
-    width: 60%;
+    width: 700px;
     height: 100%;
     right: 0;
     overflow-y: auto;
+    background: url("./styles/img/details.png") no-repeat white;
+    background-size: contain;
   }
 </style>
+<script>
+  $(function () {
+    $(".result-close-detail").on("click", function () {
+      $(".result-detail").animate({"right": "-700px"}, function () {
+        console.log("here");
+        $(".result-detail-overlay").hide();
+      });
+    });
+  });
+</script>
 <div class="result-detail-overlay">
   <div class="result-detail">
-    <div class="result-close-detail"></div>
+    <div class="result-close-detail">here</div>
   </div>
 </div>
