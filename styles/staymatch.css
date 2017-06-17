@@ -13,3 +13,7 @@ tag {
 tag .icon-cancel {
   padding: 0;
 }
+
+.noscroll {
+  overflow: hidden;
+}

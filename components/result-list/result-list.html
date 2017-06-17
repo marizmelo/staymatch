@@ -1,9 +1,21 @@
 <style>
   .grid .grid1 > div {
-    
     margin: 0;
   }
+  .result-list-card:hover img {
+    outline: 1px solid blue;
+  }
 </style>
+<script>
+  $(function () {
+    $(".result-list-card").on("click", function () {
+      console.log("here");
+      $(".result-detail-overlay").css({"visibility":"visible"}).fadeIn();
+      $(".result-detail").animate({"right": "700px"});
+      $("body").addClass("noscroll");
+    });
+  });
+</script>
 <div class="action-map grid">
   <div class="grid1">
     <div><h2 style="font-weight:400">We found "{{totalnumber || 0}}" hotels for you</h2></div>
@@ -13,7 +25,9 @@
   </div>
 </div>
 <div class="results grid">
-  <div ng-repeat="hotel in results" class="grid3">
-    <div style="background: red;">{{hotel.name}}</div>
+  <div ng-repeat="hotel in results" class="grid3 result-list-card">
+    <div class="center">
+      <img src="./styles/img/hotelcard.png" style="max-width:280px; cursor: pointer">
+    </div>
   </div>
 </div>

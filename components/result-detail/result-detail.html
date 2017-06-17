@@ -1,33 +1,46 @@
 <style>
   .result-detail-overlay {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     background:  rgba(0, 0, 0, 0.5);
+    visibility: hidden;
   }
   .result-detail{
-    position: absolute;
+    position: fixed;
     background: white;
     width: 700px;
     height: 100%;
     right: 0;
+    margin-right: -700px;
     overflow-y: auto;
-    background: url("./styles/img/details.png") no-repeat white;
-    background-size: contain;
+    background-size: cover;
+  }
+  .result-close-detail {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 0;
+    margin-right: 20px;
+    background: blue;
+    z-index: 1;
   }
 </style>
 <script>
   $(function () {
     $(".result-close-detail").on("click", function () {
-      $(".result-detail").animate({"right": "-700px"}, function () {
-        console.log("here");
-        $(".result-detail-overlay").hide();
-      });
+      if ($(".result-detail-overlay").is(":visible")) {
+        $(".result-detail").animate({"right": "-700px"}, function () {
+          $(".result-detail-overlay").fadeOut("fast");
+          $("body").removeClass("noscroll");
+        });
+      }
     });
   });
 </script>
 <div class="result-detail-overlay">
   <div class="result-detail">
     <div class="result-close-detail">here</div>
+    <img src="./styles/img/details.png" width=700>
   </div>
 </div>
