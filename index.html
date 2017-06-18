@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="responsive" ng-app="Staymatch">
   <head>
+    <!-- <base href="/liberio/staymatch/"> -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Staymatch | Find Hotels Effortlessly</title>
@@ -10,16 +11,20 @@
     <script src="./scripts/angular.min.js"></script>
     <script src="./scripts/angular-ui-router.min.js"></script>
     <script>
+    // prevent jump to top of page
+      $('a').click(function(e) {
+        e.preventDefault();
+      });
       var app = angular.module('Staymatch', ['ui.router']);
       app.config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/home');
         $stateProvider
           .state('home', {
             url: '/home',
-            templateUrl: '/views/home.html'
+            templateUrl: './views/home.html'
           }).state('results', {
             url: '/results?search',
-            templateUrl: '/views/results.html'
+            templateUrl: './views/results.html'
           });
       });
 
@@ -55,23 +60,23 @@
       // DIRECTIVES
       app.directive('matchSearchbar', function (){
         return {
-          templateUrl: '/components/searchbar/searchbar.html'
+          templateUrl: './components/searchbar/searchbar.html'
         };
       });
       app.directive('matchSearch', function () {
         return {
-          templateUrl: '/components/search/search.html'
+          templateUrl: './components/search/search.html'
         };
       });
       app.directive('matchResultList', function () {
         return {
-          templateUrl: '/components/result-list/result-list.html',
+          templateUrl: './components/result-list/result-list.html?342342',
           controller: 'ResultsCtrl'
         };
       });
       app.directive('matchResultDetail', function () {
         return {
-          templateUrl: '/components/result-detail/result-detail.html',
+          templateUrl: './components/result-detail/result-detail.html',
           controller: 'ResultsCtrl'
         };
       });
